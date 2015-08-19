@@ -1,0 +1,23 @@
+﻿<Window x:Class="JsonEditor.ProductEditWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:ViewModel="clr-namespace:JsonEditor"
+        xmlns:control="clr-namespace:MultiSelectComboBox;assembly=MultiSelectComboBox"
+        Title="ProductEditWindow" Height="362" Width="549">
+    <Window.Resources>
+        <ViewModel:ViewModel x:Key="ViewModel"/>
+    </Window.Resources>
+    <Grid  DataContext="{Binding Source={StaticResource ViewModel}}">
+        <Grid Name="MainGrid" DataContext="{Binding}">
+            <TextBlock Name="TXTProductname" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="{Binding uidisplayname}" VerticalAlignment="Top" Height="48" Width="163" FontWeight="Bold"/>
+            <ScrollViewer Margin="10,63,252,37" VerticalScrollBarVisibility="Auto">
+                <TextBlock HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="{Binding descriptionfordetail}" VerticalAlignment="Top" Width="263"/>
+            </ScrollViewer>
+            <Image Source="{Binding image}" HorizontalAlignment="Left" Height="166" Margin="300,37,0,0" VerticalAlignment="Top" Width="160"/>
+            <Button Name="BTNNext" Content="Next" HorizontalAlignment="Left" Margin="456,300,0,0" VerticalAlignment="Top" Width="75" Click="BTNNext_Click"/>
+            <Button Name="BTNPrev" Content="Previous" HorizontalAlignment="Left" Margin="10,300,0,0" VerticalAlignment="Top" Width="75" Click="BTNPrev_Click"/>
+            <TextBlock HorizontalAlignment="Left" Margin="294,208,0,0" TextWrapping="Wrap" Text="Placement options" VerticalAlignment="Top" Height="25" Width="166" FontSize="16"/>
+        </Grid>
+        <control:MultiSelectComboBox ItemsSource="{Binding Items}" SelectedItems="{Binding SelectedItems}" x:Name="MC" ToolTip="{Binding Path=Text, RelativeSource={RelativeSource Self}}" Margin="294,237,10,57"/>
+    </Grid>
+</Window>

@@ -1,0 +1,78 @@
+﻿<Window x:Class="JsonEditor.ProductsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:ViewModel="clr-namespace:JsonEditor"
+        xmlns:control="clr-namespace:MultiSelectComboBox;assembly=MultiSelectComboBox"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="ProductsWindow" Height="529" Width="524">
+    <Window.Resources>
+        <ViewModel:ViewModel x:Key="ViewModel"/>
+    </Window.Resources>
+    <Grid Name="BaseGrid" DataContext="{Binding Source={StaticResource ViewModel}}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="120"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="Meno" VerticalAlignment="Center" HorizontalAlignment="Right" Height="16" Margin="0,8,0,6" Width="31"/>
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="Cesta k bundlu" VerticalAlignment="Center" HorizontalAlignment="Right" Height="16" Margin="0,8,0,6" Width="79"/>
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="Cesta k obrazku" VerticalAlignment="Center" HorizontalAlignment="Right" Height="16" Margin="0,10,0,4" Width="84"/>
+        <TextBlock Grid.Row="3" Grid.Column="0" Text="Popis" VerticalAlignment="Center" HorizontalAlignment="Right" Height="16" Margin="0,14,0,30" Width="29"/>
+        <TextBlock Grid.Row="4" Grid.Column="0" Text="Detailny popis" VerticalAlignment="Center" HorizontalAlignment="Right" Height="16" Margin="0,56,0,48" Width="79"/>
+        <TextBlock Grid.Row="5" Grid.Column="0" Text="Cesta k vyrobcovi" VerticalAlignment="Center" HorizontalAlignment="Right" Height="16" Margin="0,36,0,8" Width="93"/>
+
+        <TextBox Name="TBXMeno" Grid.Row="0" Grid.Column="1" />
+        <TextBox Name="TBXPathBundle" Grid.Row="1" Grid.Column="1" />
+        <TextBox Name="TBXPathImage" Grid.Row="2" Grid.Column="1" />
+        <TextBox Name="TBXShortDescription" Grid.Row="3" Grid.Column="1" TextWrapping="Wrap"/>
+        <TextBox Name="TBXLongDescription" Grid.Row="4" Grid.Column="1" TextWrapping="Wrap"/>
+        <TextBox Name="TBXPathManufacturer" Grid.Row="5" Grid.Column="1" TextWrapping="Wrap"/>
+
+        <ComboBox Name="CBRoom"  HorizontalAlignment="Left" Margin="10,26,0,0" Grid.Row="6" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2" SelectionChanged="CBRoom_SelectionChanged">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding uidisplayname}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <ComboBox Name="CBType" Grid.Column="1" HorizontalAlignment="Left" Margin="35,26,0,0" Grid.Row="6" VerticalAlignment="Top" Width="120" SelectionChanged="CBType_SelectionChanged">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding uidisplayname}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <ComboBox Name="CBSubType" Grid.Column="1" HorizontalAlignment="Left" Margin="160,26,0,0" Grid.Row="6" VerticalAlignment="Top" Width="120" SelectionChanged="CBSubType_SelectionChanged">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding uidisplayname}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <ComboBox Name="CBNamufacturer" Grid.Column="1" HorizontalAlignment="Left" Margin="285,26,0,0" Grid.Row="6" VerticalAlignment="Top" Width="120" SelectionChanged="CBNamufacturer_SelectionChanged">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding uidisplayname}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <TextBlock HorizontalAlignment="Left" Margin="10,5,0,0" Grid.Row="6" TextWrapping="Wrap" Text="Izba" VerticalAlignment="Top" Width="80"/>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="35,5,0,0" Grid.Row="6" TextWrapping="Wrap" Text="Typ" VerticalAlignment="Top" Width="120"/>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="160,5,0,0" Grid.Row="6" TextWrapping="Wrap" Text="Subtyp" VerticalAlignment="Top" Width="51"/>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="285,5,0,0" Grid.Row="6" TextWrapping="Wrap" Text="Vyrobca" VerticalAlignment="Top" Width="55"/>
+
+        <Button Name="BTNAdd" Content="Add" HorizontalAlignment="Left" Margin="10,129,0,0" VerticalAlignment="Top" Width="84" Height="30" Click="BTNAdd_Click" Grid.Row="6"/>
+        <Button Name="BTNAddClose" Content="Add and close"  HorizontalAlignment="Left" Margin="10,129,0,0" VerticalAlignment="Top" Width="166" Height="30" Grid.Row="6" Click="BTNAddClose_Click" Grid.Column="1"/>
+
+        <control:MultiSelectComboBox ItemsSource="{Binding Items}" SelectedItems="{Binding SelectedItems}" x:Name="MC" ToolTip="{Binding Path=Text, RelativeSource={RelativeSource Self}}" Margin="160,57,11,79" Grid.Column="1" Grid.Row="6"/>
+        <TextBlock HorizontalAlignment="Left" Margin="40,57,0,0" Grid.Row="6" TextWrapping="Wrap" Text="Placement options" VerticalAlignment="Top" Grid.ColumnSpan="2" Height="33" Width="215" FontSize="20"/>
+    </Grid>
+</Window>

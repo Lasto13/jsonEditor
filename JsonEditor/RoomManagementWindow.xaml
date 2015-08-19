@@ -1,0 +1,50 @@
+﻿<Window x:Class="JsonEditor.RoomManagementWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:self="clr-namespace:JsonEditor"
+        Title="RoomManagementWindow" Height="800" Width="600">
+    <Grid>
+        <TreeView Name="tvRooms" HorizontalAlignment="Left" Height="694" Margin="10,66,0,0" VerticalAlignment="Top" Width="572">
+            <TreeView.Resources>
+                <HierarchicalDataTemplate DataType="{x:Type self:JsonBase}" ItemsSource="{Binding elements}">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Izby"/>
+                        <Button Name="BTNAddRoom" Content="+" Click="BTNAddRoom_Click" DataContext="{Binding}" Width="35" Margin="10, 0, 0, 0"/>
+                        
+                    </StackPanel>
+                </HierarchicalDataTemplate>
+                <HierarchicalDataTemplate DataType="{x:Type self:RoomItem}" ItemsSource="{Binding child}">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding uidisplayname, StringFormat=(Izba): {0} }"/>
+                        <Button Name="BTNAddRoomType" Content="+" Click="BTNAddRoomType_Click" DataContext="{Binding}" Width="35" Margin="10, 0, 0, 0"/>
+                        <Button Name="BTNRemoveRoom" Content="-" Click="BTNRemoveRoom_Click" DataContext="{Binding}" Width="35" Margin="10, 0, 0, 0"/>
+                        <Button Name="BTNRenameRoom" Content="Rename" Click="BTNRenameRoom_Click" DataContext="{Binding}" Width="50" Margin="10, 0, 0, 0"/>
+                        
+                    </StackPanel>
+                </HierarchicalDataTemplate>
+                <HierarchicalDataTemplate DataType="{x:Type self:InteriorObjectType}" ItemsSource="{Binding child}">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding uidisplayname, StringFormat=(Typ): {0}}"/>
+                        <Button Name="BTNAddRoomSubtype" Content="+" Click="BTNAddRoomSubtype_Click" DataContext="{Binding}" Width="35" Margin="10, 0, 0, 0"/>
+                        <Button Name="BTNRemoveType" Content="-" Click="BTNRemoveType_Click" DataContext="{Binding}" Width="35" Margin="10, 0, 0, 0"/>
+                        <Button Name="BTNRenameType" Content="Rename" Click="BTNRenameType_Click" DataContext="{Binding}" Width="50" Margin="10, 0, 0, 0"/>
+                        
+                    </StackPanel>
+                </HierarchicalDataTemplate>
+                <HierarchicalDataTemplate DataType="{x:Type self:InteriorObjectSubtype}" ItemsSource="{Binding child}">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding uidisplayname, StringFormat=(SubTyp): {0}}"/>
+                        <Button Name="BTNRemoveSubType" Content="-" Click="BTNRemoveSubType_Click" DataContext="{Binding}" Width="35" Margin="10, 0, 0, 0"/>
+                        <Button Name="BTNRenameSubType" Content="Rename" Click="BTNRenameSubType_Click" DataContext="{Binding}" Width="50" Margin="10, 0, 0, 0"/>
+                    </StackPanel>
+                </HierarchicalDataTemplate>
+                <HierarchicalDataTemplate DataType="{x:Type self:InteriorProduct}" ItemsSource="{Binding products}">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding uidisplayname}"/>
+                    </StackPanel>
+                </HierarchicalDataTemplate>
+            </TreeView.Resources>
+        </TreeView>
+        <Button Name="BTNSaveClose" Content="Save and close" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="130" Height="51" Click="BTNSaveClose_Click"/>
+    </Grid>
+</Window>

@@ -1,0 +1,11 @@
+﻿<Window x:Class="JsonEditor.WindowWithStringResult"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="WindowWithStringResult" Height="136" Width="350"
+        FocusManager.FocusedElement="{Binding ElementName=TBXResult}"
+        PreviewKeyDown="Window_PreviewKeyDown">
+    <Grid>
+        <TextBox Name="TBXResult" HorizontalAlignment="Left" Height="60" Margin="23,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="192"/>
+        <Button Name="OKClicked" Content="OK" HorizontalAlignment="Left" Margin="285,10,0,0" VerticalAlignment="Top" Width="47" Click="OKClicked_Click"/>
+    </Grid>
+</Window>
