@@ -21,6 +21,8 @@ namespace JsonEditor
         public int subtyp { get; set; }
         public int manufacturerid { get; set; }
         public string manufacturername { get; set; }
+        public string hash { get; set; }
+        public uint crc { get; set; }
         public ObjectPlacementOptions placementOptions { get; set; }
 
         public InteriorProduct()

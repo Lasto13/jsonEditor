@@ -9,6 +9,7 @@ namespace JsonEditor
     public class JsonBase
     {
         public string SkyboxPath { get; set; }
+        public string BaseAssetbundlePath { get; set; }
         public Balkony balkony { get; set; }
         public DW okna { get; set; }
         public DW dvere { get; set; }

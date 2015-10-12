@@ -13,5 +13,12 @@ namespace JsonEditor
     /// </summary>
     public partial class App : Application
     {
+        private void Application_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
+        {
+            string message = "Unhandled exception occured:\n" + e.Exception.Message;
+            string caption = "Oooooops, nedobre :/";
+            MessageBox.Show(message , caption, MessageBoxButton.OK);
+            e.Handled = true;
+        }
     }
 }

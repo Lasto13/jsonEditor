@@ -15,8 +15,10 @@
         <Button x:Name="ButtonManageRooms" Content="Manage rooms" HorizontalAlignment="Left" Margin="10,299,0,0" VerticalAlignment="Top" Width="199" Height="43" IsEnabled="False" Click="ButtonManageRooms_Click"/>
         <Button Name="BTNEditProducts" Content="Edit products" HorizontalAlignment="Left" Margin="10,364,0,0" VerticalAlignment="Top" Width="199" Height="42" IsEnabled="False" Click="BTNEditProducts_Click"/>
         <Button Name="BTNOpenJsonFromURL" Content="Open json from URL" Margin="214,16,10,445" Click="BTNOpenJsonFromURL_Click"/>
-        <TextBox Name="TXTSkyboxpath" HorizontalAlignment="Left" Height="23" Margin="10,467,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="393"/>
-        <TextBlock HorizontalAlignment="Left" Margin="10,446,0,0" TextWrapping="Wrap" Text="Skybox path" VerticalAlignment="Top" Width="190"/>
+        <TextBox Name="TXTSkyboxpath" HorizontalAlignment="Left" Height="23" Margin="10,472,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="393"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,456,0,0" TextWrapping="Wrap" Text="Skybox path" VerticalAlignment="Top" Width="190"/>
+        <TextBox Name="TXTBasePath" HorizontalAlignment="Left" Height="23" Margin="10,433,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="393"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,417,0,0" TextWrapping="Wrap" Text="Base path" VerticalAlignment="Top" Width="190"/>
 
     </Grid>
 </Window>

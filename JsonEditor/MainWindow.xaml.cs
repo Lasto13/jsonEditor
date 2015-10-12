@@ -158,6 +158,10 @@ namespace JsonEditor
 
         private async void ButtonSaveFile_Click(object sender, RoutedEventArgs e)
         {
+            await Save();
+        }
+        private async Task<bool> Save()
+        {
             #region Manage IDs
             for (int i = 0; i < jsonBase.elements.Count; i++) //izby
             {
@@ -183,21 +187,32 @@ namespace JsonEditor
             }
             #endregion
 
+            if (string.IsNullOrEmpty(jsonBase.BaseAssetbundlePath))
+            {
+                MessageBox.Show("Base Assetbundle path is null or empty", "Invalid JSON", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+            if (string.IsNullOrEmpty(jsonBase.SkyboxPath))
+            {
+                MessageBox.Show("Skybox path is null or empty", "Invalid JSON", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
             string serializedJson = await Task.Factory.StartNew(() => JsonConvert.SerializeObject(jsonBase, Formatting.Indented, settings));
 
             SaveFileDialog sf = new SaveFileDialog();
             sf.AddExtension = true;
             sf.DefaultExt = "*.json";
             sf.Filter = "JSON|*.json";
-            sf.FileOk += async (s, ea)  =>
-                {
-                    Stream stream = sf.OpenFile();
-                    StreamWriter sw = new StreamWriter(stream);
-                    await sw.WriteAsync(serializedJson);
+            sf.FileOk += async (s, ea) =>
+            {
+                Stream stream = sf.OpenFile();
+                StreamWriter sw = new StreamWriter(stream);
+                await sw.WriteAsync(serializedJson);
 
-                    sw.Close();
-                };
+                sw.Close();
+            };
             sf.ShowDialog();
+            return true;
         }
 
         private void ButtonAddInterior_Click(object sender, RoutedEventArgs e)
@@ -207,12 +222,12 @@ namespace JsonEditor
             w.ShowDialog();
         }
 
-        protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
+        protected override async void OnClosing(System.ComponentModel.CancelEventArgs e)
         {
             MessageBoxResult result = MessageBox.Show(this, "Save json ?", "", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No);
             if (result == MessageBoxResult.Yes)
             {
-                ButtonSaveFile_Click(null, null);
+                bool saved = await Save();
                 e.Cancel = true;
             }
 

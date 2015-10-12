@@ -90,6 +90,17 @@ namespace JsonEditor
             product.manufacturerid = CBNamufacturer.SelectedIndex;
             product.manufacturername = (CBNamufacturer.SelectedItem as ManufacturerItem).uidisplayname;
             product.placementOptions = ObjectPlacementOptions.None;
+            product.hash = TBXHash.Text;
+
+            uint crc;
+            if (!uint.TryParse(TBXCrc.Text, out crc))
+            {
+                MessageBox.Show("Crc field is empty or has incorrect value", "Invalid product");
+                return;
+            }
+            else
+                product.crc = crc;
+
             foreach (var sel in MC.SelectedItems)
             {
                 product.placementOptions |= (ObjectPlacementOptions)sel.Value;

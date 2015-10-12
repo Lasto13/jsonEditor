@@ -3,7 +3,7 @@
         xmlns:ViewModel="clr-namespace:JsonEditor"
         xmlns:control="clr-namespace:MultiSelectComboBox;assembly=MultiSelectComboBox"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="ProductsWindow" Height="529" Width="524">
+        Title="ProductsWindow" Height="620.902" Width="530.725">
     <Window.Resources>
         <ViewModel:ViewModel x:Key="ViewModel"/>
     </Window.Resources>
@@ -69,10 +69,15 @@
         <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="160,5,0,0" Grid.Row="6" TextWrapping="Wrap" Text="Subtyp" VerticalAlignment="Top" Width="51"/>
         <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="285,5,0,0" Grid.Row="6" TextWrapping="Wrap" Text="Vyrobca" VerticalAlignment="Top" Width="55"/>
 
-        <Button Name="BTNAdd" Content="Add" HorizontalAlignment="Left" Margin="10,129,0,0" VerticalAlignment="Top" Width="84" Height="30" Click="BTNAdd_Click" Grid.Row="6"/>
-        <Button Name="BTNAddClose" Content="Add and close"  HorizontalAlignment="Left" Margin="10,129,0,0" VerticalAlignment="Top" Width="166" Height="30" Grid.Row="6" Click="BTNAddClose_Click" Grid.Column="1"/>
+        <Button Name="BTNAdd" Content="Add" HorizontalAlignment="Left" Margin="10,221,0,0" VerticalAlignment="Top" Width="84" Height="30" Click="BTNAdd_Click" Grid.Row="6"/>
+        <Button Name="BTNAddClose" Content="Add and close"  HorizontalAlignment="Left" Margin="10,221,0,0" VerticalAlignment="Top" Width="166" Height="30" Grid.Row="6" Click="BTNAddClose_Click" Grid.Column="1"/>
 
-        <control:MultiSelectComboBox ItemsSource="{Binding Items}" SelectedItems="{Binding SelectedItems}" x:Name="MC" ToolTip="{Binding Path=Text, RelativeSource={RelativeSource Self}}" Margin="160,57,11,79" Grid.Column="1" Grid.Row="6"/>
+        <control:MultiSelectComboBox ItemsSource="{Binding Items}" SelectedItems="{Binding SelectedItems}" x:Name="MC" ToolTip="{Binding Path=Text, RelativeSource={RelativeSource Self}}" Margin="160,57,11,171" Grid.Column="1" Grid.Row="6"/>
         <TextBlock HorizontalAlignment="Left" Margin="40,57,0,0" Grid.Row="6" TextWrapping="Wrap" Text="Placement options" VerticalAlignment="Top" Grid.ColumnSpan="2" Height="33" Width="215" FontSize="20"/>
+        
+        <TextBlock Grid.Column="0" Grid.Row="6" Text="Hash" Margin="5, 110, 0, 0"/>
+        <TextBlock Grid.Column="0" Grid.Row="6" Text="Crc" Margin="5, 140, 0, 0"/>
+        <TextBox Name="TBXCrc" Grid.Column="1" Grid.Row="6" Margin="5, 140, 0, 60"/>
+        <TextBox Name="TBXHash" Grid.Column="1" Grid.Row="6" Margin="5, 110, 0, 120"/>
     </Grid>
 </Window>
