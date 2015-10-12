@@ -15,7 +15,7 @@ namespace JsonEditor
     {
         private void Application_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
         {
-            string message = "Unhandled exception occured:\n" + e.Exception.Message;
+            string message = "Unhandled exception occured:\n" + e.Exception.Message + "\nStacktrace:\n" + e.Exception.StackTrace;
             string caption = "Oooooops, nedobre :/";
             MessageBox.Show(message , caption, MessageBoxButton.OK);
             e.Handled = true;
