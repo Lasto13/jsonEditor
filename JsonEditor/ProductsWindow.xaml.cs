@@ -122,7 +122,7 @@ namespace JsonEditor
             {
                 availableTypes.Add(type);
             }
-
+            //
             CBType.SelectedIndex = 0;
             CBType.ItemsSource = availableTypes;
             CBType.SelectedIndex = 0;
