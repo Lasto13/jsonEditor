@@ -92,14 +92,17 @@ namespace JsonEditor
             product.placementOptions = ObjectPlacementOptions.None;
             product.hash = TBXHash.Text;
 
-            uint crc;
-            if (!uint.TryParse(TBXCrc.Text, out crc))
+            if (!string.IsNullOrEmpty(product.hash))
             {
-                MessageBox.Show("Crc field is empty or has incorrect value", "Invalid product");
-                return;
+                uint crc;
+                if (!uint.TryParse(TBXCrc.Text, out crc))
+                {
+                    MessageBox.Show("Crc field is empty or has incorrect value", "Invalid product");
+                    return;
+                }
+                else
+                    product.crc = crc;
             }
-            else
-                product.crc = crc;
 
             foreach (var sel in MC.SelectedItems)
             {

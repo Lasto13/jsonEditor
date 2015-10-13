@@ -76,7 +76,7 @@
         <TextBlock HorizontalAlignment="Left" Margin="40,57,0,0" Grid.Row="6" TextWrapping="Wrap" Text="Placement options" VerticalAlignment="Top" Grid.ColumnSpan="2" Height="33" Width="215" FontSize="20"/>
         
         <TextBlock Grid.Column="0" Grid.Row="6" Text="Hash" Margin="5, 110, 0, 0"/>
-        <TextBlock Grid.Column="0" Grid.Row="6" Text="Crc" Margin="5, 140, 0, 0"/>
+        <TextBlock Grid.Column="0" Grid.Row="6" Text="Crc" Margin="5, 140, 0, 60"/>
         <TextBox Name="TBXCrc" Grid.Column="1" Grid.Row="6" Margin="5, 140, 0, 60"/>
         <TextBox Name="TBXHash" Grid.Column="1" Grid.Row="6" Margin="5, 110, 0, 120"/>
     </Grid>
