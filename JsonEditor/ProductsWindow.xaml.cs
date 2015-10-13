@@ -125,6 +125,7 @@ namespace JsonEditor
 
             CBType.SelectedIndex = 0;
             CBType.ItemsSource = availableTypes;
+            CBType.SelectedIndex = 0;
         }
 
         private void CBType_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -139,6 +140,7 @@ namespace JsonEditor
 
             CBSubType.SelectedIndex = 0;
             CBSubType.ItemsSource = availableSubTypes;
+            CBSubType.SelectedIndex = 0;
         }
 
         private void CBSubType_SelectionChanged(object sender, SelectionChangedEventArgs e)
